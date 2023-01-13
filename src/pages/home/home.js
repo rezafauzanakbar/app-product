@@ -47,21 +47,23 @@ const Home = () => {
   };
 
   const logout = async () => {
-    const token = localStorage.getItem("token");
-    await axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/api/logout`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data.message);
-        localStorage.clear();
-        return navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    localStorage.clear();
+    return navigate("/");
+    // const token = localStorage.getItem("token");
+    // await axios
+    //   .post(`${process.env.REACT_APP_BACKEND_URL}/api/logout`, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data.message);
+    //     localStorage.clear();
+    //     return navigate("/");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   return (
     <Container className="mt-3">
@@ -80,11 +82,11 @@ const Home = () => {
                     TAMBAH USER
                   </Button>
                 </div>
-                {/* <div className="col-auto">
+                <div className="col-auto">
                   <Button type="submit" variant="danger" className="mb-3" onClick={logout}>
                     Logout
                   </Button>
-                </div> */}
+                </div>
               </div>
               <Table striped bordered hover className="mb-1">
                 <thead>
